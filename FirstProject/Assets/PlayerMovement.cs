@@ -12,11 +12,11 @@ public class PlayerMovement : MonoBehaviour {
     // Update is called once per frame
     private void Update()
     {
-        if (Input.GetKey("d"))
+        if (Input.GetKey("d") || Input.GetKey("right"))
         {
             moveRight = true;
         }
-        if (Input.GetKey("a"))
+        if (Input.GetKey("a") || Input.GetKey("left"))
         {
             moveLeft = true;
         }
@@ -29,12 +29,12 @@ public class PlayerMovement : MonoBehaviour {
 
         if (moveRight)
         {
-            rb.AddForce(sidewaysForce * Time.deltaTime, 0, 0);
+            rb.AddForce(sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
             moveRight = false;
         }
         if (moveLeft)
         {
-            rb.AddForce(-sidewaysForce * Time.deltaTime, 0, 0);
+            rb.AddForce(-sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
             moveLeft = false;
         }
     }
